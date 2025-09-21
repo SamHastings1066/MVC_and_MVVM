@@ -7,34 +7,40 @@
 
 import SwiftUI
 
+struct Document {
+    var isSigned: Bool
+}
+
 @Observable
 class ViewModelSwiftUI {
-    var isDocSigned = false
-    let signatureSymbol = "signature"
+    var document = Document(isSigned: false)
 
     var prompt: String {
-        isDocSigned ? "Undo signature" : "Please sign this document"
+        document.isSigned ? "Undo signature" : "Please sign this document"
     }
+    
+    var isDocSigned: Bool { document.isSigned }
 
     func sign() {
-        isDocSigned.toggle()
+        document.isSigned.toggle()
     }
 }
 
 struct SwiftUIMVVMDemo: View {
-    @State private var viewModel = ViewModelSwiftUI()
+    @Bindable var viewModel: ViewModelSwiftUI
+    private let signatureSymbol = "signature"
+
+    init(viewModel: ViewModelSwiftUI = ViewModelSwiftUI()) {
+        self.viewModel = viewModel
+    }
 
     var body: some View {
-
         VStack {
             Button(viewModel.prompt) {
                 viewModel.sign()
             }
-
-            Image(systemName: viewModel.signatureSymbol)
+            Image(systemName: signatureSymbol)
                 .symbolEffect(.drawOn, isActive: !viewModel.isDocSigned)
-                
-
         }
     }
 }
