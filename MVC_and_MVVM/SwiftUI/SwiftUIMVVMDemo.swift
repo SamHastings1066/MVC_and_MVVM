@@ -7,25 +7,6 @@
 
 import SwiftUI
 
-struct Document {
-    var isSigned: Bool
-}
-
-@Observable
-class ViewModelSwiftUI {
-    var document = Document(isSigned: false)
-
-    var prompt: String {
-        document.isSigned ? "Undo signature" : "Please sign this document"
-    }
-    
-    var isDocSigned: Bool { document.isSigned }
-
-    func sign() {
-        document.isSigned.toggle()
-    }
-}
-
 struct SwiftUIMVVMDemo: View {
     @Bindable var viewModel: ViewModelSwiftUI
     private let signatureSymbol = "signature"
