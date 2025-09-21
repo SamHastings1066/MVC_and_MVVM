@@ -21,7 +21,7 @@ class ViewModelSwiftUI {
     }
 }
 
-struct Demo: View {
+struct SwiftUIMVVMDemo: View {
     @State private var viewModel = ViewModelSwiftUI()
 
     var body: some View {
@@ -40,5 +40,5 @@ struct Demo: View {
 }
 
 #Preview {
-    Demo()
+    SwiftUIMVVMDemo()
 }
