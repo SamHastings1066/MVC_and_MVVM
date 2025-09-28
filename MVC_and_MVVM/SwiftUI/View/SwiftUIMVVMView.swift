@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SwiftUIMVVMDemo: View {
+struct SwiftUIMVVMView: View {
     @Bindable var viewModel: ViewModelSwiftUI
     private let signatureSymbol = "signature"
 
@@ -27,5 +27,5 @@ struct SwiftUIMVVMDemo: View {
 }
 
 #Preview {
-    SwiftUIMVVMDemo()
+    SwiftUIMVVMView()
 }
