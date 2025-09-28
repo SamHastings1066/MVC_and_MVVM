@@ -10,35 +10,37 @@ import UIKit
 class ViewController: UIViewController {
 
     private var document = Document(isSigned: false)
-
+    
+    /*
+     The ViewController holds a reference to the View. This means that the VC can "control" the View by calling the View's methods. E.g. `updateDocumentView()` calls `documentView.updateAppearance(isSigned:)`
+     */
     private let documentView = DocumentView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        setUpView()
     }
 
-    private func setupView() {
+    private func setUpView() {
         view.addSubview(documentView)
         documentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             documentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             documentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
-        documentView.onToggleSigned = { [weak self] in
-            self?.toggleSigned()
+        documentView.onPrimaryAction = { [weak self] in
+            self?.toggleDocumentSignedState()
         }
-        updateView()
+        updateDocumentView()
     }
 
-    @objc private func toggleSigned() {
+    @objc private func toggleDocumentSignedState() {
         document.isSigned.toggle()
-        updateView()
+        updateDocumentView()
     }
 
-    // Method through which Controller communicates with View to ensure view updates to reflect model state.
-    private func updateView() {
-        documentView.configure(isSigned: document.isSigned)
+    private func updateDocumentView() {
+        documentView.updateAppearance(isSigned: document.isSigned)
     }
 
 }
