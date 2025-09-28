@@ -10,7 +10,6 @@ import UIKit
 class DocumentView: UIButton {
 
     // Closure through which the view communicates user interactions back to the controller.
-    // Named to be UI-centric and not leak model semantics.
     var onPrimaryAction: (() -> Void)?
 
     override init(frame: CGRect) {
