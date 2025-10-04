@@ -29,17 +29,17 @@ class ViewController: UIViewController {
             documentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
         documentView.onPrimaryAction = { [weak self] in
-            self?.toggleDocumentSignedState()
+            self?.updateModel()
+            self?.updateView()
         }
-        updateDocumentView()
+        updateView()
     }
 
-    @objc private func toggleDocumentSignedState() {
+    private func updateModel() {
         document.isSigned.toggle()
-        updateDocumentView()
     }
 
-    private func updateDocumentView() {
+    private func updateView() {
         documentView.updateAppearance(isSigned: document.isSigned)
     }
 
