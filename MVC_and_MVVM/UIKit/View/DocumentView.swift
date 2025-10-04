@@ -8,6 +8,8 @@
 import UIKit
 
 class DocumentView: UIButton {
+    let signedTitle = "☑︎ Signed"
+    let unsignedTitle = "☐ Unsigned"
 
     // Closure through which the view communicates user interactions back to the controller.
     var onPrimaryAction: (() -> Void)?
@@ -23,7 +25,7 @@ class DocumentView: UIButton {
     }
 
     func updateAppearance(isSigned: Bool) {
-        let title = isSigned ? "☑︎ Signed" : "☐ Unsigned"
+        let title = isSigned ? signedTitle : unsignedTitle
         setTitle(title, for: .normal)
         setTitleColor(.systemBlue, for: .normal)
     }
