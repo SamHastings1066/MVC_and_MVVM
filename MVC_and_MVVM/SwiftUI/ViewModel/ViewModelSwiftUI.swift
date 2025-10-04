@@ -9,7 +9,7 @@ import Observation
 
 @Observable
 class ViewModelSwiftUI {
-    var document = Document(isSigned: false)
+    private var document = Document(isSigned: false)
 
     var prompt: String {
         document.isSigned ? "Undo signature" : "Please sign this document"
