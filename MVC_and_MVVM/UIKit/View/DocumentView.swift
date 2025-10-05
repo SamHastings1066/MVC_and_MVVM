@@ -12,16 +12,16 @@ class DocumentView: UIButton {
     let unsignedTitle = "☐ Unsigned"
 
     // Closure through which the view communicates user interactions back to the controller.
-    var onPrimaryAction: (() -> Void)?
+    var onTap: (() -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addTarget(self, action: #selector(handlePrimaryAction), for: .touchUpInside)
+        addTarget(self, action: #selector(handleTap), for: .touchUpInside)
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        addTarget(self, action: #selector(handlePrimaryAction), for: .touchUpInside)
+        addTarget(self, action: #selector(handleTap), for: .touchUpInside)
     }
 
     func updateAppearance(isSigned: Bool) {
@@ -30,7 +30,7 @@ class DocumentView: UIButton {
         setTitleColor(.systemBlue, for: .normal)
     }
 
-    @objc private func handlePrimaryAction() {
-        onPrimaryAction?()
+    @objc private func handleTap() {
+        onTap?()
     }
 }

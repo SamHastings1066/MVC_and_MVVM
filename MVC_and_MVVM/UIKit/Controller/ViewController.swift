@@ -28,7 +28,7 @@ class ViewController: UIViewController {
             documentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             documentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
-        documentView.onPrimaryAction = { [weak self] in
+        documentView.onTap = { [weak self] in
             self?.updateModel()
             self?.updateView()
         }
